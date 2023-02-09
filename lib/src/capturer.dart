@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:statusbarz/src/styles.dart';
 import 'package:statusbarz/statusbarz.dart';
 
 class StatusbarzCapturer extends StatelessWidget {

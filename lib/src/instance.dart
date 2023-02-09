@@ -1,13 +1,12 @@
 import 'dart:ui';
-import 'package:flutter/material.dart' hide Image;
-import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:statusbarz/src/observer.dart';
 import 'package:statusbarz/src/errors.dart';
 import 'package:statusbarz/src/styles.dart';
 
-import 'package:image/image.dart' as img;
+import 'package:image/image.dart' as image;
 
 class Statusbarz {
   static final GlobalKey _key = GlobalKey();
@@ -94,7 +93,7 @@ class Statusbarz {
             await capturedImage.toByteData(format: ImageByteFormat.png);
         final bytes = byteData!.buffer.asUint8List();
 
-        var bitmap = img.decodeImage(bytes);
+        var bitmap = image.decodeImage(bytes);
 
         var red = 0;
         var green = 0;
@@ -110,9 +109,9 @@ class Statusbarz {
             var c = bitmap.getPixel(x, y);
 
             pixels++;
-            red += img.getRed(c);
-            green += img.getGreen(c);
-            blue += img.getBlue(c);
+            red += c.r as int;
+            green += c.g as int;
+            blue += c.b as int;
           }
         }
 
